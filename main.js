@@ -82,12 +82,12 @@ document.addEventListener("mousemove", e => {
   const el = document.getElementById("invRotator");
   if (!el) return;
   const phrases = [
-    "what's about to matter, before it's mainstream.",
-    "the prototype that survives the vehicle.",
-    "the AI horizon, three years out.",
-    "the partnership that compresses the roadmap.",
-    "the KPI that proves the bet worked.",
-    "breakthrough tech, made road-ready."
+    "What's about to matter, before it's mainstream.",
+    "The prototype that survives the vehicle.",
+    "The AI horizon, three years out.",
+    "The partnership that compresses the roadmap.",
+    "The KPI that proves the bet worked.",
+    "Breakthrough tech, made road-ready."
   ];
   let i = 0;
   el.textContent = "";

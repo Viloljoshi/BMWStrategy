@@ -290,8 +290,10 @@ main { position: relative; z-index: 2; }
 .road .lane::before { left: 22%; transform: skewX(28deg); transform-origin: bottom; }
 .road .lane::after { right: 22%; transform: skewX(-28deg); transform-origin: bottom; }
 
-.car { position: absolute; left: 50%; bottom: 15%; transform: translateX(-50%); width: min(450px, 72%); animation: carBob 4.5s ease-in-out infinite; filter: drop-shadow(0 20px 26px rgba(0,0,0,0.65)); z-index: 3; }
-@keyframes carBob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-5px); } }
+.car { position: absolute; left: -52%; bottom: 14%; width: min(380px, 50%); z-index: 3; will-change: left; animation: drive 7s linear infinite; }
+.car-inner { animation: carBob 2.4s ease-in-out infinite; filter: drop-shadow(0 20px 26px rgba(0,0,0,0.65)); }
+@keyframes drive { 0% { left: -52%; } 100% { left: 104%; } }
+@keyframes carBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 .car svg { width: 100%; height: auto; display: block; }
 .car .body { fill: url(#carGrad); stroke: rgba(140,198,255,0.55); stroke-width: 1.2; }
 .car .glass-pane { fill: rgba(78,163,255,0.30); }
@@ -299,11 +301,12 @@ main { position: relative; z-index: 2; }
 .car .hub { fill: var(--accent); }
 .car .light { fill: #fff; }
 .car .underglow { fill: var(--accent); opacity: 0.6; filter: blur(8px); }
-.streak { position: absolute; height: 2px; right: 50%; border-radius: 2px; background: linear-gradient(90deg, transparent, var(--accent-2)); opacity: 0; z-index: 2; }
-.streak.s1 { bottom: 46%; width: 120px; animation: streak 1.6s linear infinite; }
-.streak.s2 { bottom: 40%; width: 180px; animation: streak 1.3s linear infinite 0.4s; }
-.streak.s3 { bottom: 34%; width: 90px; animation: streak 1.9s linear infinite 0.8s; }
-@keyframes streak { 0% { transform: translateX(40px); opacity: 0; } 20% { opacity: 0.9; } 100% { transform: translateX(-260px); opacity: 0; } }
+/* speed lines trailing the moving car */
+.streak { position: absolute; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, var(--accent-2)); }
+.car .streak.s1 { top: 40%; right: 88%; width: 64px; animation: streakFlick 0.55s linear infinite; }
+.car .streak.s2 { top: 54%; right: 92%; width: 100px; animation: streakFlick 0.5s linear infinite 0.18s; }
+.car .streak.s3 { top: 68%; right: 86%; width: 48px; animation: streakFlick 0.7s linear infinite 0.32s; }
+@keyframes streakFlick { 0% { opacity: 0; transform: translateX(18px); } 40% { opacity: 0.85; } 100% { opacity: 0; transform: translateX(-34px); } }
 .stage-tags { position: absolute; left: 18px; top: 16px; display: flex; gap: 8px; flex-wrap: wrap; z-index: 4; }
 .stage-tag {
   font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
